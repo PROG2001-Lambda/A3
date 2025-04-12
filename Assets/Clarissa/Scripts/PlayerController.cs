@@ -1,46 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
- // Rigidbody of the player.
- private Rigidbody rb; 
+    // Rigidbody of the player
+    private Rigidbody rb;
 
- // Movement along X and Y axes.
- private float movementX;
- private float movementY;
+    // Movement input values
+    private float movementX;
+    private float movementY;
 
- // Speed at which the player moves.
- public float speed = 5; 
+    // Speed at which the player moves
+    public float speed = 5f;
 
- // Start is called before the first frame update.
- void Start()
+    // Rotation speed (optional)
+    public float rotationSpeed = 10f;
+
+    // Start is called before the first frame update
+    void Start()
     {
- // Get and store the Rigidbody component attached to the player.
         rb = GetComponent<Rigidbody>();
+
+        // Optional: Add drag to reduce sliding
+        rb.drag = 1f;
+        rb.angularDrag = 0.05f;
+
+        // Optional: Lock XZ rotation to prevent turtle flipping
+        rb.freezeRotation = true;
     }
- 
- // This function is called when a move input is detected.
- void OnMove(InputValue movementValue)
+
+    // Called by the Input System when movement input is detected
+    void OnMove(InputValue movementValue)
     {
- // Convert the input value into a Vector2 for movement.
         Vector2 movementVector = movementValue.Get<Vector2>();
-
- // Store the X and Y components of the movement.
-        movementX = movementVector.x; 
-        movementY = movementVector.y; 
+        movementX = movementVector.x;
+        movementY = movementVector.y;
     }
 
- // FixedUpdate is called once per fixed frame-rate frame.
- private void FixedUpdate() 
+    // Called at fixed intervals for physics updates
+    void FixedUpdate()
     {
- // Create a 3D movement vector using the X and Y inputs.
-        Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
+        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
- // Apply force to the Rigidbody to move the player.
-        rb.AddForce(movement * speed); 
+        // Apply direct velocity movement
+        rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
+
+        // Optional: make turtle face movement direction
+        if (movement != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(movement, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+        }
     }
 }
