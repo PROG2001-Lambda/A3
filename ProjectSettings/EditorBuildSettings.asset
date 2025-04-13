@@ -4,12 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-<<<<<<< Updated upstream
-    path: Assets/Avery/Scene-A/Avery Scene.unity
-=======
-    path: Assets/Avery/SceneA/Avery Scene.unity
->>>>>>> Stashed changes
-    guid: e9f52ed28cd7ef84e95e09945ae33b72
+  m_Scenes: []
   m_configObjects: {}
