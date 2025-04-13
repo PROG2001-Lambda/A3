@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Avery/Scene/Avery Scene.unity
+    path: Assets/Avery/Scene-A/Avery Scene.unity
     guid: e9f52ed28cd7ef84e95e09945ae33b72
   m_configObjects: {}
