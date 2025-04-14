@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/YPeng/YPScene/YP Scene.unity
+    guid: b8bccb5301c44a049a334641f83c8022
+  - enabled: 1
+    path: Assets/Menu/Menu Scene/MenuScene.unity
+    guid: fb8da0823c13c6c4d9f9ac798f07e858
+  - enabled: 1
+    path: Assets/Menu/Menu Scene/MenuPage2.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
