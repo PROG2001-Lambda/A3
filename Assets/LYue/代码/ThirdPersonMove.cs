@@ -17,8 +17,15 @@ public class ThirdPersonMove : MonoBehaviour
     [Tooltip("Small gap around the character to prevent clipping")]
     [Range(0f, 0.2f)] public float skinWidth = 0.08f;
 
+    [Header("Jump Settings")]
+    [Tooltip("Jump height in meters")]
+    public float jumpHeight = 1.5f;
+
     [Tooltip("Gravity applied to the character")]
     public float gravity = -15f;
+
+    [Tooltip("Time required to pass before being able to jump again")]
+    public float jumpTimeout = 0.1f;
 
     private CharacterController _controller;
     private GameObject _mainCamera;
@@ -26,6 +33,8 @@ public class ThirdPersonMove : MonoBehaviour
     private float _rotationVelocity;
     private Vector2 _move;
     private float _verticalVelocity;
+    private float _jumpTimeoutDelta;
+    private bool _jumpInput;
 
     void Start()
     {
@@ -36,10 +45,12 @@ public class ThirdPersonMove : MonoBehaviour
 
         _controller = GetComponent<CharacterController>();
         ApplyCharacterSettings();
+        _jumpTimeoutDelta = jumpTimeout;
     }
 
     void Update()
     {
+        HandleJump();
         HandleMovement();
         ApplyGravity();
     }
@@ -67,9 +78,29 @@ public class ThirdPersonMove : MonoBehaviour
             velocity = targetDir.normalized * (speed * Time.deltaTime);
         }
 
-        // Apply vertical velocity (gravity)
         velocity.y = _verticalVelocity * Time.deltaTime;
         _controller.Move(velocity);
+    }
+
+    private void HandleJump()
+    {
+        // Reset jump timeout
+        if (_controller.isGrounded)
+        {
+            _jumpTimeoutDelta = jumpTimeout;
+        }
+        else
+        {
+            _jumpTimeoutDelta -= Time.deltaTime;
+        }
+
+        // Jump if grounded and timeout has passed
+        if (_jumpInput && _jumpTimeoutDelta <= 0.0f && _controller.isGrounded)
+        {
+            // Calculate jump velocity using physics formula: v = sqrt(2gh)
+            _verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            _jumpInput = false;
+        }
     }
 
     private void ApplyGravity()
@@ -77,7 +108,10 @@ public class ThirdPersonMove : MonoBehaviour
         if (_controller.isGrounded)
         {
             // Small negative value to keep the character grounded
-            _verticalVelocity = -1f;
+            if (_verticalVelocity < 0.0f)
+            {
+                _verticalVelocity = -1f;
+            }
         }
         else
         {
@@ -90,7 +124,11 @@ public class ThirdPersonMove : MonoBehaviour
         _move = value.Get<Vector2>();
     }
 
-    // This function is called when the script is loaded or a value is changed in the inspector
+    void OnJump(InputValue value)
+    {
+        _jumpInput = value.isPressed;
+    }
+
     private void OnValidate()
     {
         if (_controller != null)
