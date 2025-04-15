@@ -10,83 +10,83 @@ public class AdvancedCameraController : MonoBehaviour
     [Tooltip("值越小跟随越平滑 (0.01-0.2)")]
     public float smoothFactor = 0.1f;      // 平滑系数
 
-    [Header("鼠标控制")]
-    public float rotateSpeed = 100f;       // 视角旋转速度
-    public float zoomSpeed = 10f;          // 滚轮缩放速度
-    public float minZoom = 2f;             // 最小缩放距离
-    public float maxZoom = 15f;            // 最大缩放距离
-
     [Header("防穿墙设置")]
     public LayerMask collisionMask;        // 碰撞检测层 (建议选择环境层)
-    public float wallBuffer = 0.5f;        // 防穿墙缓冲距离
+    public float wallBuffer = 0.8f;        // 防穿墙缓冲距离
+    public float minDistance = 1.5f;       // 相机最小距离
 
     private Vector3 currentOffset;         // 动态偏移量
-    private float currentZoom;             // 当前缩放值
 
     void Start()
     {
-        // 初始化偏移和缩放
+        // 初始化偏移
         currentOffset = baseOffset;
-        currentZoom = baseOffset.magnitude;
-        Cursor.lockState = CursorLockMode.Locked; // 锁定鼠标到窗口中心
     }
 
     void LateUpdate()
     {
-        HandleCameraRotation();
-        HandleCameraZoom();
+        HandleCameraZoom();      // 保留缩放功能
         FollowPlayerWithCollision();
     }
 
-    // 处理鼠标旋转
-    void HandleCameraRotation()
-    {
-        if (Input.GetMouseButton(1)) // 按住右键旋转
-        {
-            float mouseX = Input.GetAxis("Mouse X") * rotateSpeed * Time.deltaTime;
-            float mouseY = -Input.GetAxis("Mouse Y") * rotateSpeed * Time.deltaTime;
-
-            // 垂直角度限制（避免翻转）
-            float newYAngle = Mathf.Clamp(transform.eulerAngles.x + mouseY, 10f, 80f);
-            
-            // 绕角色旋转
-            transform.RotateAround(player.position, Vector3.up, mouseX);
-            transform.rotation = Quaternion.Euler(newYAngle, transform.eulerAngles.y, 0);
-            
-            // 更新动态偏移
-            currentOffset = transform.position - player.position;
-        }
-    }
-
-    // 处理滚轮缩放
+    // 处理滚轮缩放（可选）
     void HandleCameraZoom()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll != 0)
         {
-            currentZoom = Mathf.Clamp(currentZoom - scroll * zoomSpeed, minZoom, maxZoom);
-            currentOffset = currentOffset.normalized * currentZoom;
+            // 沿当前方向缩放
+            Vector3 zoomDirection = currentOffset.normalized;
+            float newMagnitude = Mathf.Clamp(
+                currentOffset.magnitude - scroll * 5f, // 缩放速度
+                minDistance, 
+                baseOffset.magnitude // 最大距离保持初始值
+            );
+            currentOffset = zoomDirection * newMagnitude;
         }
     }
 
-    // 带碰撞检测的跟随
+    // 带碰撞检测的跟随（优化版）
     void FollowPlayerWithCollision()
     {
         Vector3 desiredPosition = player.position + currentOffset;
         RaycastHit hit;
 
-        // 从角色向相机方向发射射线
-        if (Physics.Linecast(player.position, desiredPosition, out hit, collisionMask))
+        // 使用球形射线检测（更准确）
+        if (Physics.SphereCast(
+            player.position,
+            0.3f, // 检测半径
+            currentOffset.normalized,
+            out hit,
+            currentOffset.magnitude,
+            collisionMask
+        ))
         {
-            // 遇到障碍物时调整位置
-            float safeDistance = Vector3.Distance(player.position, hit.point) - wallBuffer;
+            // 计算安全距离（确保不小于最小距离）
+            float safeDistance = Mathf.Max(hit.distance - wallBuffer, minDistance);
             desiredPosition = player.position + currentOffset.normalized * safeDistance;
         }
 
-        // 平滑移动
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothFactor);
-        
-        // 始终面向角色
-        transform.LookAt(player);
+        // 平滑移动并更新实际偏移
+        transform.position = Vector3.Lerp(
+            transform.position, 
+            desiredPosition, 
+            smoothFactor
+        );
+        currentOffset = transform.position - player.position;
+
+        // 保持注视角色（看向胸部高度）
+        transform.LookAt(player.position + Vector3.up * 1.2f);
+    }
+
+    // 调试可视化
+    void OnDrawGizmosSelected()
+    {
+        if (player != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(player.position, transform.position);
+            Gizmos.DrawWireSphere(transform.position, 0.3f);
+        }
     }
 }
