@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private Animator animator;
-
     private float movementX;
     private float movementY;
 
@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+
+    public AudioSource eatSound; // ✅ 音效
 
     private int count;
 
@@ -34,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
         if (winTextObject != null)
             winTextObject.SetActive(false);
+
+        Time.timeScale = 1f;
     }
 
     void OnMove(InputValue movementValue)
@@ -54,7 +58,6 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
 
-        // 控制动画播放或停止
         if (animator != null)
         {
             float movementMagnitude = new Vector2(movementX, movementY).magnitude;
@@ -68,6 +71,13 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             count++;
+
+            // ✅ 播放吃掉音效
+            if (eatSound != null)
+            {
+                eatSound.Play();
+            }
+
             SetCountText();
         }
     }
@@ -78,6 +88,15 @@ public class PlayerController : MonoBehaviour
             countText.text = count.ToString() + "/10";
 
         if (count >= 10 && winTextObject != null)
+        {
             winTextObject.SetActive(true);
+            Time.timeScale = 0f; // 暂停游戏
+        }
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
