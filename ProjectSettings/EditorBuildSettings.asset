@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/YPeng/YPScene/YP Scene.unity
     guid: b8bccb5301c44a049a334641f83c8022
+  - enabled: 1
+    path: Assets/Clarissa/Scenes/Clarissa Scene.unity
+    guid: 80884b6ab751d7847a3c99294c4565d3
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 45294b7aad37abd4d9f5cb6c23605e65, type: 2}
