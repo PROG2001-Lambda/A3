@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private Animator animator;
-
     private float movementX;
     private float movementY;
 
@@ -18,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+
+    public AudioSource eatSound; // ✅ 音效
 
     private int count;
 
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
         if (winTextObject != null)
             winTextObject.SetActive(false);
 
-        Time.timeScale = 1f; // 确保游戏开始时正常运行
+        Time.timeScale = 1f;
     }
 
     void OnMove(InputValue movementValue)
@@ -70,6 +71,13 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             count++;
+
+            // ✅ 播放吃掉音效
+            if (eatSound != null)
+            {
+                eatSound.Play();
+            }
+
             SetCountText();
         }
     }
@@ -86,10 +94,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // ✅ 在 UI 按钮中绑定这个方法：再玩一次
     public void RestartGame()
     {
-        Time.timeScale = 1f; // 恢复时间
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // 重新加载当前场景
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
