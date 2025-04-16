@@ -2359,6 +2359,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd232805ec57aa245a81c2df3f69f66a, type: 3}
+--- !u!1 &278779250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 278779251}
+  m_Layer: 0
+  m_Name: CameraTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &278779251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278779250}
+  m_LocalRotation: {x: -0, y: -0.97467864, z: -0, w: -0.22361048}
+  m_LocalPosition: {x: -0.08, y: 0.86, z: 0.01}
+  m_LocalScale: {x: 0.47911063, y: 0.4791108, z: 0.47911063}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1128829222}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &306780674 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: fdc7d8dffa381b54cb7740b8761d54c0, type: 3}
@@ -8993,6 +9024,11 @@ MonoBehaviour:
   targetScore: 10
   levelCompleteSound: {fileID: 0}
   completionDelay: 1.5
+--- !u!4 &1128829222 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 36a2903e866c7184a8349d9d266daa3d, type: 3}
+  m_PrefabInstance: {fileID: 803649056}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1130383196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11074,14 +11110,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1415421973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78855c8fda8f73640bffd10cbd8fdd3b, type: 3}
+  m_Script: {fileID: 11500000, guid: ab42543155fa52244b9dcd99ed3ebc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1128829211}
-  baseOffset: {x: 0, y: 2, z: -5}
-  rotateSpeed: 100
-  minVerticalAngle: -20
-  maxVerticalAngle: 80
+  target: {fileID: 278779251}
+  offset: {x: 0, y: 2, z: -6}
+  mouseSensitivity: 2
+  distance: 5
+  verticalLimit: 80
 --- !u!1001 &1419954659
 PrefabInstance:
   m_ObjectHideFlags: 0
