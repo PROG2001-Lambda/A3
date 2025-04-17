@@ -22,7 +22,8 @@ public class SettingsManager : MonoBehaviour
     void Start()
     {
         // 1. 初始化 AudioSource
-        bgmAudioSource = BGMManager.Instance.bgmSource;
+        bgmAudioSource = GameObject.FindGameObjectWithTag("BGM").GetComponent<AudioSource>();
+
 
         // 2. 读取存储设置
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
