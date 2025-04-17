@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using System.Collections.Generic;
 
 public class SettingsManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class SettingsManager : MonoBehaviour
     public Toggle muteToggle;
 
     [Header("分辨率与画面")]
-    public Dropdown resolutionDropdown;
+    public TMP_Dropdown resolutionDropdown;
     public Toggle fullscreenToggle;
 
     private AudioSource bgmAudioSource;
@@ -21,7 +22,7 @@ public class SettingsManager : MonoBehaviour
     void Start()
     {
         // 1. 初始化 AudioSource
-        bgmAudioSource = GameObject.FindGameObjectWithTag("BGM").GetComponent<AudioSource>();
+        bgmAudioSource = BGMManager.Instance.bgmSource;
 
         // 2. 读取存储设置
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
