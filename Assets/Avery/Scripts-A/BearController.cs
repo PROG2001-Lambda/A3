@@ -1,70 +1,75 @@
-
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody), typeof(Animator))]
 public class BearController : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    public float moveSpeed = 5f; // 北极熊的移动速度
-    public float turnSpeed = 200f; // 北极熊的旋转速度
+    public float moveSpeed = 3f;       // 走路速度
+    public float turnSpeed = 100f;     // 旋转速度
+    public Transform cameraTransform;  // 摄像机的Transform
+    public Vector3 offset = new Vector3(0, 8, -10); // 摄像机相对位置偏移
+    public float smoothSpeed = 0.125f; // 摄像机平滑速度
 
-    [Header("Camera Settings")]
-    public Transform cameraTransform; // 用于控制摄像机的位置
+    private Rigidbody rb;
+    private Animator animator;
 
-    private Rigidbody rb; // 用于物理计算
-    private Animator animator; // 用于播放动画
+    // 用于平滑跟随的速度变量
+    private Vector3 velocity = Vector3.zero;
 
     void Start()
     {
-        // 获取北极熊的刚体和动画组件
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        gameObject.tag = "Player"; // 确保熊有正确的 Tag
 
-        // 确保 Rigidbody 的旋转被冻结
-        rb.freezeRotation = true;
+        // 设置 Rigidbody 插值，使物理更新更加平滑
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+
+        // 调整 Rigidbody 的阻力值来确保移动平稳
+        rb.drag = 0.3f; // 设置适当的线性阻力
+        rb.angularDrag = 0.1f; // 设置适当的角阻力
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        // 获取玩家的输入（WASD）
-        float horizontal = Input.GetAxis("Horizontal"); // A/D 或者 左/右箭头
-        float vertical = Input.GetAxis("Vertical"); // W/S 或者 上/下箭头
+        // 获取输入
+        float moveInput = Input.GetAxis("Vertical");   // W/S
+        float turnInput = Input.GetAxis("Horizontal"); // A/D
 
-        // 计算角色的移动方向（前后移动 + 左右旋转）
-        Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
+        // 动画控制：只看前后移动
+        animator.SetFloat("Speed", Mathf.Abs(moveInput));
 
-        // 当角色正在移动时
-        if (moveDirection.magnitude > 0)
+        // 旋转（A/D 左右转）: 使用物理方式旋转
+        Quaternion turnRotation = Quaternion.Euler(0f, turnInput * turnSpeed * Time.deltaTime, 0f);
+        rb.MoveRotation(rb.rotation * turnRotation);
+
+        // 反转W/S的方向：
+        Vector3 move = Vector3.zero;
+
+        // 处理 W 键（按下 W 时角色应该后退）
+        if (moveInput > 0)
         {
-            // 更新动画参数，控制行走动画
-            animator.SetFloat("Speed", moveDirection.magnitude);
-
-            // 移动北极熊
-            rb.MovePosition(transform.position + moveDirection * moveSpeed * Time.deltaTime);
-
-            // 旋转北极熊：调整为平滑旋转
-            // 计算目标旋转角度
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            // 使用 Slerp 平滑旋转
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+            move = -transform.forward * moveInput * moveSpeed * Time.fixedDeltaTime; // W 键后退
         }
-        else
+        // 处理 S 键（按下 S 时角色应该前进）
+        else if (moveInput < 0)
         {
-            // 如果不移动，保持静止动画
-            animator.SetFloat("Speed", 0);
+            move = transform.forward * Mathf.Abs(moveInput) * moveSpeed * Time.fixedDeltaTime; // S 键前进
         }
 
-        // 更新摄像机位置
-        FollowCamera();
+        // 使用物理引擎更新位置
+        rb.MovePosition(rb.position + move);
     }
 
-    // 摄像机跟随北极熊
-    void FollowCamera()
+    void LateUpdate()
     {
         if (cameraTransform != null)
         {
-            // 摄像机在北极熊的后方，并保持一定的高度
-            cameraTransform.position = transform.position + new Vector3(0, 5, -10); 
-            cameraTransform.LookAt(transform); // 摄像机始终朝向北极熊
+            // 使用 SmoothDamp 来平滑地跟随摄像机
+            Vector3 desiredPosition = transform.position + offset;
+            cameraTransform.position = Vector3.SmoothDamp(cameraTransform.position, desiredPosition, ref velocity, smoothSpeed);
+
+            // 保持摄像机看向目标（角色）
+            cameraTransform.LookAt(transform);
         }
     }
 }
