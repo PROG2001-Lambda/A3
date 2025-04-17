@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 1
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: e87f7da5499689549978c3f03047881d, type: 3}
 --- !u!135 &11870270
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 1
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: e87f7da5499689549978c3f03047881d, type: 3}
 --- !u!135 &82265849
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2064,7 +2064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 1
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: e87f7da5499689549978c3f03047881d, type: 3}
 --- !u!135 &415860273
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2382,7 +2382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 1
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: e87f7da5499689549978c3f03047881d, type: 3}
 --- !u!135 &493081668
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3778,7 +3778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 1
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: e87f7da5499689549978c3f03047881d, type: 3}
 --- !u!135 &864214742
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4543,7 +4543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 1
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: e87f7da5499689549978c3f03047881d, type: 3}
 --- !u!135 &1033420716
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4652,7 +4652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 1
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: e87f7da5499689549978c3f03047881d, type: 3}
 --- !u!135 &1054518675
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6180,7 +6180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 1
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: e87f7da5499689549978c3f03047881d, type: 3}
 --- !u!135 &1498211241
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6942,7 +6942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 1
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: e87f7da5499689549978c3f03047881d, type: 3}
 --- !u!135 &1716843023
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9569,6 +9569,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3212364187972132669, guid: 0f891772a11678045b70e2b1c785810e, type: 3}
+      propertyPath: collectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e87f7da5499689549978c3f03047881d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f891772a11678045b70e2b1c785810e, type: 3}
 --- !u!4 &3212364189439020913 stripped
