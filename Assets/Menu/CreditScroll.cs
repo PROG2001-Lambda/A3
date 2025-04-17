@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class CreditScroll : MonoBehaviour
 {
-    public float scrollSpeed = 50f; // 滚动速度
-    public float maxScrollDistance = 800f; // 最大滚动距离（你可以根据需要调整）
-    
+    public float scrollSpeed = 50f;             // 滚动速度
+    public float maxScrollDistance = 800f;      // 最大滚动距离（根据文本长度调整）
+
     private RectTransform rectTransform;
     private Vector2 startPos;
 
@@ -12,18 +12,20 @@ public class CreditScroll : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         startPos = rectTransform.anchoredPosition;
+
+        ResetPosition(); // 确保进入页面时从头开始
     }
 
     void Update()
     {
-        // 如果没超过最大滚动距离就继续滚
+        // 使用 unscaledDeltaTime 解决 Time.timeScale = 0 导致卡住的问题
         if (rectTransform.anchoredPosition.y - startPos.y < maxScrollDistance)
         {
-            rectTransform.anchoredPosition += Vector2.up * scrollSpeed * Time.deltaTime;
+            rectTransform.anchoredPosition += Vector2.up * scrollSpeed * Time.unscaledDeltaTime;
         }
     }
 
-    // 让 Credit 从头开始滚动
+    // 重置滚动位置（可供外部调用）
     public void ResetPosition()
     {
         if (rectTransform != null)
@@ -32,3 +34,4 @@ public class CreditScroll : MonoBehaviour
         }
     }
 }
+
