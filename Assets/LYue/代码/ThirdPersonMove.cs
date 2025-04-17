@@ -46,6 +46,7 @@ public class ThirdPersonMove : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         ApplyCharacterSettings();
         _jumpTimeoutDelta = jumpTimeout;
+
     }
 
     void Update()
