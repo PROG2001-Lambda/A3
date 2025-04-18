@@ -18,7 +18,9 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
 
-    public AudioSource eatSound; // ✅ 音效
+    public AudioSource eatSound;   // 吃鱼音效播放器
+    public AudioSource winSound;   // ✅ 胜利音效播放器
+    public AudioClip winClip;      // ✅ 胜利音效音频文件
 
     private int count;
 
@@ -72,7 +74,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count++;
 
-            // ✅ 播放吃掉音效
+            // 播放吃鱼音效
             if (eatSound != null)
             {
                 eatSound.Play();
@@ -90,6 +92,13 @@ public class PlayerController : MonoBehaviour
         if (count >= 10 && winTextObject != null)
         {
             winTextObject.SetActive(true);
+
+            // ✅ 播放胜利音效
+            if (winSound != null && winClip != null)
+            {
+                winSound.PlayOneShot(winClip);
+            }
+
             Time.timeScale = 0f; // 暂停游戏
         }
     }
