@@ -1473,8 +1473,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 424743340}
-  hoverScale: {x: 1.0001, y: 1.0001, z: 1}
-  scaleSpeed: 5
+  hoverScale: {x: 1.1, y: 1.1, z: 1}
+  scaleSpeed: 8
 --- !u!1001 &190068379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2498,7 +2498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278779250}
   m_LocalRotation: {x: 0, y: -0.97467864, z: -0, w: -0.22361048}
-  m_LocalPosition: {x: -0.07999991, y: 0.8600001, z: 0.009999514}
+  m_LocalPosition: {x: 0.1, y: 0.8600001, z: -0.361}
   m_LocalScale: {x: 0.47911063, y: 0.4791108, z: 0.47911063}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7349,19 +7349,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36a2903e866c7184a8349d9d266daa3d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.06
+      value: 12.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36a2903e866c7184a8349d9d266daa3d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.08800006
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36a2903e866c7184a8349d9d266daa3d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -35.59
+      value: -45.51
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36a2903e866c7184a8349d9d266daa3d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.22361048
+      value: -0.5216665
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36a2903e866c7184a8349d9d266daa3d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -7369,7 +7369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36a2903e866c7184a8349d9d266daa3d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.97467864
+      value: 0.85314953
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36a2903e866c7184a8349d9d266daa3d, type: 3}
       propertyPath: m_LocalRotation.z
@@ -7381,7 +7381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36a2903e866c7184a8349d9d266daa3d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 205.842
+      value: 242.888
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36a2903e866c7184a8349d9d266daa3d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -7549,8 +7549,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 424743340}
-  hoverScale: {x: 1.0001, y: 1.0001, z: 1}
-  scaleSpeed: 5
+  hoverScale: {x: 1.1, y: 1.1, z: 1}
+  scaleSpeed: 8
 --- !u!1001 &825179219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12599,14 +12599,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415421973}
-  m_LocalRotation: {x: 0.0043751267, y: -0.23875196, z: -0.0045470973, w: -0.9710601}
-  m_LocalPosition: {x: -9.56, y: 1.37, z: -43.04}
+  m_LocalRotation: {x: 0.0050187847, y: -0.38438374, z: -0.0038248696, w: -0.92315185}
+  m_LocalPosition: {x: 7.84, y: 1.53, z: -48.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -0.611, y: 27.624, z: 0.386}
+  m_LocalEulerAnglesHint: {x: -0.699, y: 45.211, z: 0.184}
 --- !u!114 &1415421978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12620,7 +12620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 278779251}
-  offset: {x: 0, y: 2, z: -5}
+  offset: {x: -2, y: 3, z: -0.2}
   mouseSensitivity: 2
   distance: 5
   verticalLimit: 80
@@ -15457,8 +15457,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 424743340}
-  hoverScale: {x: 1.0001, y: 1.0001, z: 1}
-  scaleSpeed: 5
+  hoverScale: {x: 1.1, y: 1.1, z: 1}
+  scaleSpeed: 8
 --- !u!1001 &1647234767
 PrefabInstance:
   m_ObjectHideFlags: 0
