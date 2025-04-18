@@ -19,6 +19,8 @@ public class BearController : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f; // ✅ 确保每次进入场景时恢复游戏速度
+
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         rb.freezeRotation = true;

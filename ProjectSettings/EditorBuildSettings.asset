@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/YPeng/YPScene/YP Scene.unity
     guid: b8bccb5301c44a049a334641f83c8022
   - enabled: 1
-    path: Assets/Avery/Scene-A/Game Scene.unity
+    path: Assets/Avery/Scene-A/Avery Scene.unity
     guid: bfa30be72a9b2174eaa9c7481a860aa1
   - enabled: 1
     path: Assets/Clarissa/Scenes/Clarissa Scene.unity
@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Menu/Menu Scene/Setting.unity
     guid: aaf713da1e27bd64dbd0c2f72fc66db9
+  - enabled: 1
+    path: Assets/Menu/Menu Scene/Credit Scene.unity
+    guid: 918084f1349a90b4a9ea5377c859fa83
   m_configObjects: {}
