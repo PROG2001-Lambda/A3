@@ -487,12 +487,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 23121789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d942d087f7ed647488b345c015699d86, type: 3}
+  m_Script: {fileID: 11500000, guid: 16a0a14682d334d4c91bce7e37c7d824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickSound: {fileID: 0}
-  hoverScale: {x: 1.1, y: 1.1, z: 1}
-  scaleSpeed: 10
+  clickSound: {fileID: 688159770}
 --- !u!1001 &26121890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5535,6 +5533,7 @@ GameObject:
   - component: {fileID: 649822103}
   - component: {fileID: 649822102}
   - component: {fileID: 649822105}
+  - component: {fileID: 649822106}
   m_Layer: 5
   m_Name: "\u83DC\u5355"
   m_TagString: Untagged
@@ -5607,7 +5606,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 649822103}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 649822106}
+        m_TargetAssemblyTypeName: AllNavBehaviour, Assembly-CSharp
+        m_MethodName: LoadMyScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &649822103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5661,6 +5672,18 @@ MonoBehaviour:
   clickSound: {fileID: 688159770}
   hoverScale: {x: 1.1, y: 1.1, z: 1}
   scaleSpeed: 10
+--- !u!114 &649822106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649822100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62039a70d582f3469f80daba3ca74f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &680681410 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1030716683527058, guid: 2429ba3ee4494ad4d92f7acf477c2e77, type: 3}
@@ -5708,7 +5731,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c51fc1518d6be004282abbb3580edc06, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -13454,12 +13477,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1425828716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d942d087f7ed647488b345c015699d86, type: 3}
+  m_Script: {fileID: 11500000, guid: 16a0a14682d334d4c91bce7e37c7d824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 688159770}
-  hoverScale: {x: 1.1, y: 1.1, z: 1}
-  scaleSpeed: 10
 --- !u!1001 &1426297934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15106,12 +15127,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1658645258}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d942d087f7ed647488b345c015699d86, type: 3}
+  m_Script: {fileID: 11500000, guid: 16a0a14682d334d4c91bce7e37c7d824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 688159770}
-  hoverScale: {x: 1.1, y: 1.1, z: 1}
-  scaleSpeed: 10
 --- !u!1001 &1662794497
 PrefabInstance:
   m_ObjectHideFlags: 0
