@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17569578, g: 0.21985261, b: 0.30218095, a: 1}
+  m_IndirectSpecularColor: {r: 0.17569534, g: 0.21985182, b: 0.3021793, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1981,12 +1981,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 629491635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d942d087f7ed647488b345c015699d86, type: 3}
+  m_Script: {fileID: 11500000, guid: cadbabd7e108e8d43bbca285705cd21f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 1876631156}
-  hoverScale: {x: 1.1, y: 1.1, z: 1}
-  scaleSpeed: 10
+  hoverScale: {x: 0.9, y: 0.9, z: 1}
+  scaleSpeed: 8
 --- !u!1001 &656957860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2970,7 +2970,7 @@ GameObject:
   - component: {fileID: 947111619}
   - component: {fileID: 947111618}
   - component: {fileID: 947111617}
-  - component: {fileID: 947111620}
+  - component: {fileID: 947111621}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -3093,7 +3093,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947111615}
   m_CullTransparentMesh: 1
---- !u!114 &947111620
+--- !u!114 &947111621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3102,12 +3102,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 947111615}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d942d087f7ed647488b345c015699d86, type: 3}
+  m_Script: {fileID: 11500000, guid: cadbabd7e108e8d43bbca285705cd21f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 1876631156}
-  hoverScale: {x: 1.1, y: 1.1, z: 1}
-  scaleSpeed: 10
+  hoverScale: {x: 0.9, y: 0.9, z: 1}
+  scaleSpeed: 8
 --- !u!4 &962439873 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8697885315439536893, guid: 0484fefc1f2816e43863b4d1cbf42746, type: 3}
@@ -4548,12 +4548,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1496744983}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d942d087f7ed647488b345c015699d86, type: 3}
+  m_Script: {fileID: 11500000, guid: cadbabd7e108e8d43bbca285705cd21f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 1876631156}
-  hoverScale: {x: 1.1, y: 1.1, z: 1}
-  scaleSpeed: 10
+  hoverScale: {x: 0.9, y: 0.9, z: 1}
+  scaleSpeed: 8
 --- !u!1001 &1502803226
 PrefabInstance:
   m_ObjectHideFlags: 0
