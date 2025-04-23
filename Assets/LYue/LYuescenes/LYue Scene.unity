@@ -9642,31 +9642,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25b19097d48d20c4ea36c4dbafa6c76f, type: 3}
---- !u!1 &1999837519 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4921351482975748068, guid: 25b19097d48d20c4ea36c4dbafa6c76f, type: 3}
-  m_PrefabInstance: {fileID: 1999837518}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1999837520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999837519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74732b39af60e1a489c282e2ec56441f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMovement: {fileID: 1235788586}
-  gunTransform: {fileID: 0}
-  forwardSwayAmount: 3
-  forwardSwaySpeed: 2
-  sideTiltAmount: 2
-  tiltResponseSpeed: 5
-  runSwayMultiplier: 1.5
-  runSpeedThreshold: 4
 --- !u!1 &2040278184
 GameObject:
   m_ObjectHideFlags: 0
