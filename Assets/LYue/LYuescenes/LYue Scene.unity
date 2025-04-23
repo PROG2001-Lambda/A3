@@ -6965,7 +6965,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581710778}
   m_LocalRotation: {x: -0.008651329, y: 0.9968928, z: 0.078294, w: 0.0000031713844}
-  m_LocalPosition: {x: 0, y: 0, z: 146}
+  m_LocalPosition: {x: 0, y: 0, z: 148.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6974,7 +6974,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -8.981, y: 180.078, z: -1.001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -27.799988, y: 250.1}
+  m_AnchoredPosition: {x: -27.1, y: 264.1}
   m_SizeDelta: {x: 95.7011, y: 15.8977}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1581710780
@@ -6998,7 +6998,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: Warriors, welcome to this land of conflict. Evil enemies have captured
-    your friends, find them, and bring them home.
+    your friends, find them, and bring them home.They are only on the island in the
+    middle.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
