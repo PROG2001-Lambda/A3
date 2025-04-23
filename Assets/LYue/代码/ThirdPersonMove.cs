@@ -36,11 +36,6 @@ public class ThirdPersonMove : MonoBehaviour
     private float _jumpTimeoutDelta;
     private bool _jumpInput;
 
-    // 新增的公共属性
-    public bool IsMoving { get; private set; } // 是否在移动
-    public Vector3 MoveDirection { get; private set; } // 移动方向
-    public float CurrentSpeed { get; private set; } // 当前速度
-
     void Start()
     {
         if (_mainCamera == null)
@@ -51,6 +46,7 @@ public class ThirdPersonMove : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         ApplyCharacterSettings();
         _jumpTimeoutDelta = jumpTimeout;
+
     }
 
     void Update()
@@ -70,9 +66,8 @@ public class ThirdPersonMove : MonoBehaviour
     private void HandleMovement()
     {
         Vector3 velocity = Vector3.zero;
-        IsMoving = _move != Vector2.zero; // 更新移动状态
 
-        if (IsMoving)
+        if (_move != Vector2.zero)
         {
             Vector3 inputDir = new Vector3(_move.x, 0.0f, _move.y).normalized;
             _targetRot = Mathf.Atan2(inputDir.x, inputDir.z) * Mathf.Rad2Deg + _mainCamera.transform.eulerAngles.y;
@@ -82,16 +77,6 @@ public class ThirdPersonMove : MonoBehaviour
 
             Vector3 targetDir = Quaternion.Euler(0.0f, _targetRot, 0.0f) * Vector3.forward;
             velocity = targetDir.normalized * (speed * Time.deltaTime);
-
-            // 更新移动方向和速度
-            MoveDirection = targetDir.normalized;
-            CurrentSpeed = speed;
-        }
-        else
-        {
-            // 不在移动时重置方向和速度
-            MoveDirection = Vector3.zero;
-            CurrentSpeed = 0f;
         }
 
         velocity.y = _verticalVelocity * Time.deltaTime;
@@ -100,6 +85,7 @@ public class ThirdPersonMove : MonoBehaviour
 
     private void HandleJump()
     {
+        // Reset jump timeout
         if (_controller.isGrounded)
         {
             _jumpTimeoutDelta = jumpTimeout;
@@ -109,8 +95,10 @@ public class ThirdPersonMove : MonoBehaviour
             _jumpTimeoutDelta -= Time.deltaTime;
         }
 
+        // Jump if grounded and timeout has passed
         if (_jumpInput && _jumpTimeoutDelta <= 0.0f && _controller.isGrounded)
         {
+            // Calculate jump velocity using physics formula: v = sqrt(2gh)
             _verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
             _jumpInput = false;
         }
@@ -120,6 +108,7 @@ public class ThirdPersonMove : MonoBehaviour
     {
         if (_controller.isGrounded)
         {
+            // Small negative value to keep the character grounded
             if (_verticalVelocity < 0.0f)
             {
                 _verticalVelocity = -1f;
